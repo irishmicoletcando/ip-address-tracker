@@ -5,3 +5,8 @@ html, body {
   padding: 0;
   overflow: hidden;
 }
+
+@theme {
+  --color-very-dark-gray: hsl(0, 0%, 17%);
+  --color-dark-gray: hsl(0, 0%, 59%);
+}

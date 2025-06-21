@@ -1,17 +1,12 @@
-import Image from "next/image"
+import BackgroundImage from "./components/BackgroundImage";
+import SearchBar from "./components/SearchBar";
 
 export default function Page() {
   return (
-  <main className="p-0 m-0">
-    <div>
-      <Image 
-        src="/assets/pattern-bg-desktop.png" 
-        alt="background image"
-        width={1920}
-        height={1080}
-        className="w-full h-auto object-contain"
-      />
-    </div>
+  <main className="relative p-0 m-0">
+    <BackgroundImage />
+    <p className="mt-10 mx-auto text-center text-4xl font-semibold text-white z-100">IP Address Tracker</p>
+    <SearchBar />
   </main>
   )
 }
