@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-export default function BackgroundImage() {
+const BackgroundImage: React.FC = () => {
   return (
     <div className="fixed top-0 left-0 w-full h-full -z-10">
       <Image 
@@ -13,3 +13,5 @@ export default function BackgroundImage() {
     </div>
   )
 }
+
+export default BackgroundImage;
