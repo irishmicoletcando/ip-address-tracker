@@ -17,7 +17,7 @@ interface IpDetailsProps {
 
 const DynamicMap = dynamic(() => import("../app/components/Map"), {
   loading: () => (
-    <div className="h-full w-full flex justify-center items-center text-3xl text-black/40">
+    <div className="h-full w-full flex justify-center items-center text-lg text-black/40">
       <p>Loading...</p>
     </div>
   ),
