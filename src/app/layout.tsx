@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={rubik.className}>
       <head>
-        <link rel="icon" href="/assets/favicon.png" type="image/x-icon" />
+        <link rel="icon" href="/assets/icon-location.svg" type="image/x-icon" />
         {/* Leaflet CSS */}
         <link
           rel="stylesheet"
