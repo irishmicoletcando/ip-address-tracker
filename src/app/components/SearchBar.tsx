@@ -25,12 +25,12 @@ const SearchBar: React.FC<IpSearchProps> = ({onSearch}) => {
         value={ipAddressInput}
         onChange={e => setIpAddressInput(e.target.value)}
         placeholder="Search for any IP address or domain"
-        className="bg-white text-very-dark-gray w-xl h-10 p-4 rounded-l-md outline-none"
+        className="bg-white text-very-dark-gray w-xl h-15 p-4 text-lg rounded-l-md outline-none"
       />
 
       <button
         type="submit"
-        className="bg-black w-10 h-10 flex justify-center items-center hover:cursor-pointer"
+        className="bg-black w-10 h-15 flex justify-center items-center hover:cursor-pointer"
       >
         <Image 
           src="/assets/icon-arrow.svg"
