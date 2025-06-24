@@ -1,7 +1,7 @@
 # 🌏📍 IP Address Tracker
 This is a web app that allows users to track and visualize IP address locations using real-time geolocation data and an interactive map.
 
-![Desktop Design of the IP Address Tracker](docs\desktop-design.jpg)
+![Desktop Design of the IP Address Tracker](/docs/desktop-design.jpg)
 
 ## Features
 
