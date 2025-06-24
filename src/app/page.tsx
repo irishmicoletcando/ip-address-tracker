@@ -49,19 +49,19 @@ const Page: React.FC = () => {
   return (
   <main className="relative min-h-screen flex flex-col">
     {/* Background Section */}
-    <div className="relative h-80">
+    <div className="relative h-64 md:h-80">
       <BackgroundImage />
-      <div className="relative z-10 px-6 pt-10">
-        <p className="mx-auto text-center text-4xl font-semibold text-white mb-8">
+      <div className="relative z-10 px-4 md:px-6 pt-6 md:pt-10">
+        <h1 className="mx-auto text-center text-2xl md:text-4xl font-semibold text-white mb-4 md:mb-8">
           IP Address Tracker
-        </p>
+        </h1>
         <SearchBar onSearch={fetchData} />
       </div>
     </div>
     
     {/* IP Details Card */}
     {ipDetails && (
-      <div className="absolute top-60 left-0 right-0 z-50 px-6">
+      <div className="absolute top-40 md:top-60 left-0 right-0 z-50">
         <IPDetails 
           ip={ipDetails.ip} 
           location={ipDetails.location} 
@@ -72,7 +72,7 @@ const Page: React.FC = () => {
     )}
     
     {/* Map Section */}
-    <div className="flex-1 min-h-[500px] relative z-10">
+    <div className="flex-1 min-h-[400px] md:min-h-[500px] relative z-10 mt-0">
       <DynamicMap 
         lat={ipDetails?.lat ?? 14.609053}
         lng={ipDetails?.lng ?? 121.022256}
