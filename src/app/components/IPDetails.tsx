@@ -30,7 +30,7 @@ const IPDetails = ({ip, location, timezone, isp} : IPAddressProps) => {
       {/* Timezone */}
       <div className="flex-1">
         <p className="text-xs font-bold text-dark-gray uppercase tracking-[0.2rem] mb-3">Timezone</p>
-        <p className="text-2xl font-semibold text-very-dark-gray">{timezone}</p>
+        <p className="text-2xl font-semibold text-very-dark-gray">UTC {timezone}</p>
       </div>
 
       {/* Divider */}

@@ -48,34 +48,35 @@ const Page: React.FC = () => {
 
   return (
   <main className="relative min-h-screen flex flex-col">
-    {/* Background and Top Section */}
-    <div className="relative">
+    {/* Background Section */}
+    <div className="relative h-80">
       <BackgroundImage />
       <div className="relative z-10 px-6 pt-10">
         <p className="mx-auto text-center text-4xl font-semibold text-white mb-8">
           IP Address Tracker
         </p>
         <SearchBar onSearch={fetchData} />
-        {ipDetails && (
-          <IPDetails 
-            ip={ipDetails.ip} 
-            location={ipDetails.location} 
-            timezone={ipDetails.timezone} 
-            isp={ipDetails.isp} 
-          />
-        )}
       </div>
     </div>
     
-    {/* Map Section */}
-    <div className="flex-1 min-h-[400px]">
-      { ipDetails && (
-        <DynamicMap 
-          lat={ipDetails.lat}
-          lng={ipDetails.lng}
+    {/* IP Details Card */}
+    {ipDetails && (
+      <div className="absolute top-60 left-0 right-0 z-50 px-6">
+        <IPDetails 
+          ip={ipDetails.ip} 
+          location={ipDetails.location} 
+          timezone={ipDetails.timezone} 
+          isp={ipDetails.isp} 
         />
-      )
-      }
+      </div>
+    )}
+    
+    {/* Map Section */}
+    <div className="flex-1 min-h-[500px] relative z-10">
+      <DynamicMap 
+        lat={ipDetails?.lat ?? 14.609053}
+        lng={ipDetails?.lng ?? 121.022256}
+      />
     </div>
   </main>
   )

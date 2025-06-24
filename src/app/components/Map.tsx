@@ -12,7 +12,7 @@ const Map: React.FC<IpAddressCoordinatesProps> = ({lat, lng}) => {
     <MapContainer
       center={[lat, lng]}
       zoom={14}
-      className="min-h-[400px] w-full"
+      className="min-h-[500px] w-full"
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
