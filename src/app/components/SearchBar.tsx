@@ -1,28 +1,18 @@
 'use client'
 
-import { useState } from 'react';
 import Image from 'next/image'
+import { useState } from 'react';
 
-interface IPInformationProps {
-  ipaddress: string;
-  location: string;
-  timezone: string;
-  isp: string;
+interface IpSearchProps {
+  onSearch: (ipAddressInput: string) => Promise<void>;
 }
 
-const SearchBar: React.FC = () => {
+const SearchBar: React.FC<IpSearchProps> = ({onSearch}) => {
   const [ipAddressInput, setIpAddressInput] = useState("");
 
-  const handleSubmitIPAddress = (e) => {
+  const handleSubmitIPAddress = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("IP Address: ", ipAddressInput)
-    fetchData()
-  }
-
-  async function fetchData() {
-    const data = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_RdFlA7mfv8e0m04LCkrOrvTzg4jbM&ipAddress=${ipAddressInput}`)
-    const ipAddressData = await data.json();
-    console.log(ipAddressData)
+    onSearch(ipAddressInput)
   }
 
   return (
