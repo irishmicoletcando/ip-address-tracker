@@ -4,13 +4,25 @@ import BackgroundImage from "./components/BackgroundImage";
 import IPDetails from "./components/IPDetails";
 import SearchBar from "./components/SearchBar";
 import { useState } from "react";
+import dynamic from "next/dynamic";
 
 interface IpDetailsProps {
   ip: string;
   location: string;
   timezone: string;
   isp: string;
+  lat: number;
+  lng: number,
 }
+
+const DynamicMap = dynamic(() => import("../app/components/Map"), {
+  loading: () => (
+    <div className="h-full w-full flex justify-center items-center text-3xl text-black/40">
+      <p>Loading...</p>
+    </div>
+  ),
+  ssr: false,
+});
 
 const Page: React.FC = () => {
   const [ipDetails, setIpDetails] = useState<IpDetailsProps | null>(null);
@@ -24,7 +36,9 @@ const Page: React.FC = () => {
         ip: data.ip,
         location: `${data.location.city}, ${data.location.country}, ${data.location.region}`,
         timezone: data.location.timezone,
-        isp: data.isp
+        isp: data.isp,
+        lat: data.location.lat,
+        lng: data.location.lng
       })
       console.log(data)
     } else {
@@ -33,18 +47,36 @@ const Page: React.FC = () => {
   }
 
   return (
-  <main className="relative p-0 m-0">
-    <BackgroundImage />
-    <p className="mt-10 mx-auto text-center text-4xl font-semibold text-white z-100">IP Address Tracker</p>
-    <SearchBar onSearch={fetchData} />
-    {ipDetails && (
-      <IPDetails 
-        ip={ipDetails.ip} 
-        location={ipDetails.location} 
-        timezone={ipDetails.timezone} 
-        isp={ipDetails.isp} 
-      />
-    )}
+  <main className="relative min-h-screen flex flex-col">
+    {/* Background and Top Section */}
+    <div className="relative">
+      <BackgroundImage />
+      <div className="relative z-10 px-6 pt-10">
+        <p className="mx-auto text-center text-4xl font-semibold text-white mb-8">
+          IP Address Tracker
+        </p>
+        <SearchBar onSearch={fetchData} />
+        {ipDetails && (
+          <IPDetails 
+            ip={ipDetails.ip} 
+            location={ipDetails.location} 
+            timezone={ipDetails.timezone} 
+            isp={ipDetails.isp} 
+          />
+        )}
+      </div>
+    </div>
+    
+    {/* Map Section */}
+    <div className="flex-1 min-h-[400px]">
+      { ipDetails && (
+        <DynamicMap 
+          lat={ipDetails.lat}
+          lng={ipDetails.lng}
+        />
+      )
+      }
+    </div>
   </main>
   )
 }
